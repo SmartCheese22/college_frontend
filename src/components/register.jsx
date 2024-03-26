@@ -44,7 +44,7 @@ class Register extends Form {
   render() {
     const { data, errors } = this.state; 
     if (localStorage.getItem("token")) {
-      return <Redirect to="/dashboard" />;
+      return <Redirect to="/" />;
     }
 
     return (
