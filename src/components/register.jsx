@@ -33,7 +33,7 @@ class Register extends Form {
     try {
       const response = await userService.register(this.state.data);
       localStorage.setItem("token", response.headers["x-auth-token"]);
-      window.location = "/dashboard";
+      window.location = "/";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         toast.error("User Already Registered");
