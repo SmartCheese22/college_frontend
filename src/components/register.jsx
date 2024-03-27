@@ -183,7 +183,7 @@ class Register extends Form {
                     value={data.year}
                     onChange={this.handleChange}
                     label="Year"
-                    type="text"
+                    type="number"
                     name="year"
                   />
                   <Input
