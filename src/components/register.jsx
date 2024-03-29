@@ -67,7 +67,7 @@ class Register extends Form {
               <Input
                 value={data.name}
                 onChange={this.handleChange}
-                label="Name"
+                label="Name (min. 5 words)"
                 name="name"
                 type="text"
                 error={errors.name}
@@ -75,7 +75,7 @@ class Register extends Form {
               <Input
                 name="username"
                 value={data.username}
-                label="Username"
+                label="Username (min. 5 words)"
                 type="text"
                 onChange={this.handleChange}
                 error={errors.username}
@@ -83,7 +83,7 @@ class Register extends Form {
               <Input
                 value={data.email}
                 onChange={this.handleChange}
-                label="Email ID"
+                label="Email ID (min. 5 words)"
                 type="text"
                 name="email"
                 error={errors.email}
@@ -91,7 +91,7 @@ class Register extends Form {
               <Input
                 value={data.password}
                 onChange={this.handleChange}
-                label="Password"
+                label="Password (min. 5 words)"
                 type="password"
                 name="password"
                 error={errors.password}
