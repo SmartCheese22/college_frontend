@@ -21,6 +21,8 @@ class Dashboard extends Component {
     const { data: allposts } = await http.get(api.postsEndPoint);
     const { data: tags } = await http.get(api.tagsEndPoint);
 
+    allposts.sort((a, b) => new Date(b.time).getTime() - new Date(a.time).getTime());
+
     this.setState({
       allposts: [...allposts],
       tags: [
@@ -66,7 +68,7 @@ class Dashboard extends Component {
     const posts = paginate(filtered, currentPage, pageSize);
 
     if (allposts.length === 0)
-      return <p>Loading...</p>;
+      return <p>There are no posts in the database!</p>;
 
     return (
       <React.Fragment>
