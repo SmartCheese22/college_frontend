@@ -9,7 +9,7 @@ function AdminProfile({ user }) {
     const [userCounts, setUserCounts] = useState({});
     
     useEffect(() => {
-        axios.get('http://localhost:5000/users/user-count') 
+        axios.get('https://college-backend-tyqu.onrender.com/users/user-count') 
         .then(response => {
             setUserCounts(response.data);
         })
@@ -96,7 +96,7 @@ function ProfileDataSection({ user }) {
 
   const handleNameSubmit = () => {
     axios
-      .patch(`http://localhost:5000/users/profile/updateName/${user.email}`, { name: newName })
+      .patch(`https://college-backend-tyqu.onrender.com/users/profile/updateName/${user.email}`, { name: newName })
       .then(response => {
         console.log(response.data);
         setIsEditingName(false);
@@ -108,7 +108,7 @@ function ProfileDataSection({ user }) {
   };
   const handleUsernameSubmit = () => {
     axios
-      .patch(`http://localhost:5000/users/profile/updateUsername/${user.email}`, { username: newUsername })
+      .patch(`https://college-backend-tyqu.onrender.com/users/profile/updateUsername/${user.email}`, { username: newUsername })
       .then(response => {
         console.log(response.data);
         setIsEditingUsername(false);
@@ -123,7 +123,7 @@ function ProfileDataSection({ user }) {
 
   const handleEmailSubmit = () => {
     axios
-      .patch(`http://localhost:5000/users/profile/updateEmail/${user.email}`, { newEmail: newEmail })
+      .patch(`https://college-backend-tyqu.onrender.com/users/profile/updateEmail/${user.email}`, { newEmail: newEmail })
       .then(response => {
         console.log(response.data);
         setIsEditingEmail(false);
@@ -247,8 +247,8 @@ function DeleteUser({ user }) {
       // Determine the endpoint based on the selected deleteBy option
       const deleteEndpoint =
         deleteBy === 'email'
-          ? `http://localhost:5000/users/profile/deleteByEmail/${deleteInput}`
-          : `http://localhost:5000/users/profile/deleteByUsername/${deleteInput}`;
+          ? `https://college-backend-tyqu.onrender.com/users/profile/deleteByEmail/${deleteInput}`
+          : `https://college-backend-tyqu.onrender.com/users/profile/deleteByUsername/${deleteInput}`;
   
       if (showConfirmation) {
         axios
