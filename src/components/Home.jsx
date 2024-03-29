@@ -120,27 +120,18 @@ function TopColleges() {
         let prevIndex = (slide - 1 + data.slides.length) % data.slides.length;
         setSlide(prevIndex);
     };
-    
+
     const getSlideIndex = (index) => {
         return (index + data.slides.length) % data.slides.length;
     };
-    
+
     useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth < 820) {
-                setSlidesToShow(1);
-            } else if (window.innerWidth < 1250) {
-                setSlidesToShow(2); 
-            } else {
-                setSlidesToShow(3);
-            }
-        };
-        window.addEventListener('resize', handleResize);
-        handleResize();
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
+        const interval = setInterval(() => {
+            nextSlide();
+        }, 3000); // Rotate every 3 second
+
+        return () => clearInterval(interval);
+    }, [slide]);
 
     return (
         <>
