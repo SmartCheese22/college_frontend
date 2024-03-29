@@ -68,7 +68,7 @@ class Dashboard extends Component {
     const posts = paginate(filtered, currentPage, pageSize);
 
     if (allposts.length === 0)
-      return <p>There are no posts in the database!</p>;
+      return <p>Loading...</p>;
 
     return (
       <React.Fragment>
