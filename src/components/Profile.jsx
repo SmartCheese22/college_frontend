@@ -19,6 +19,7 @@ const ShowProfile = ({ user }) => {
     return <CollegeSearchingProfile user={user} />;
   } else if (user.userType === "Admin") {
     return <AdminProfile user={user} />;
+  }
 
   // If user object or userType is missing, render a fallback message or component
   return (
@@ -29,3 +30,4 @@ const ShowProfile = ({ user }) => {
 };
 
 export default ShowProfile;
+
