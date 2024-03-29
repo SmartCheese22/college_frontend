@@ -1,31 +1,21 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import CollegeGoingProfile from './profileCollegeGoing';
 import CollegeSearchingProfile from './profileCollegeSearching';
-import { NavLink } from "react-router-dom";
 
-const Profile = ({user}) => {
-  return (
-      <div>
-        <ShowProfile user={user}/>
-      </div>
-  );
-};
+const ShowProfile = ({ user }) => {
+  const history = useHistory();
 
-function ShowProfile({ user}) {
-  if (user && user.userType) {
-    if (user.userType === "collegeG") {
-      return (
-        <div>
-          <CollegeGoingProfile user={ user } />
-        </div>
-      );
-    } else if (user.userType === "collegeS") {
-      return (
-        <div>
-          <CollegeSearchingProfile user={ user}/>
-        </div>
-      );
-    }
+  if (!user || !user.userType) {
+    // Redirect to login if user data or userType is missing
+    history.push('/users/login');
+    return null; // Prevent rendering anything in this case
+  }
+
+  if (user.userType === "collegeG") {
+    return <CollegeGoingProfile user={user} />;
+  } else if (user.userType === "collegeS") {
+    return <CollegeSearchingProfile user={user} />;
   }
 
   // If user object or userType is missing, render a fallback message or component
@@ -34,6 +24,6 @@ function ShowProfile({ user}) {
       <p>User data not available or userType not specified.</p>
     </div>
   );
-}
+};
 
-export default Profile;
+export default ShowProfile;
