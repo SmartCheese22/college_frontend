@@ -237,7 +237,3 @@ class Register extends Form {
 }
 
 export default Register;
-  }
-}
-
-export default Register;
