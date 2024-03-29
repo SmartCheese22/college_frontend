@@ -22,7 +22,6 @@ function AdminProfile({ user }) {
     <div className="profile-container">
       <div className="profile">
         <ProfileSection user={user} />
-        <DeleteUser user={user}/>
         <DonutChart userCounts={userCounts} />
       </div>
     </div>
@@ -223,77 +222,5 @@ function ProfileDataSection({ user }) {
     </div>
   );
 }
-function DeleteUser({ user }) {
-    const [deleteBy, setDeleteBy] = useState('email'); // Default to delete by email
-    const [deleteInput, setDeleteInput] = useState('');
-    const [showConfirmation, setShowConfirmation] = useState(false);
-    const [error, setError] = useState('');
-  
-    const handleDeleteByChange = (event) => {
-      setDeleteBy(event.target.value);
-    };
-  
-    const handleDeleteInputChange = (event) => {
-      setDeleteInput(event.target.value);
-      setError(''); // Reset error state when input changes
-    };
-  
-    const handleDelete = () => {
-      if (deleteInput.trim() === '') {
-        setError('Please enter a valid email or username.');
-        return;
-      }
-  
-      // Determine the endpoint based on the selected deleteBy option
-      const deleteEndpoint =
-        deleteBy === 'email'
-          ? `https://college-backend-tyqu.onrender.com/users/profile/deleteByEmail/${deleteInput}`
-          : `https://college-backend-tyqu.onrender.com/users/profile/deleteByUsername/${deleteInput}`;
-  
-      if (showConfirmation) {
-        axios
-          .delete(deleteEndpoint)
-          .then((response) => {
-            console.log(response.data);
-            setShowConfirmation(false);
-          })
-          .catch((error) => {
-            console.error('Error deleting user:', error);
-          });
-      } else {
-        setShowConfirmation(true);
-      }
-    };
-  
-    return (
-      <div className="professional" style={{display:"grid", marginTop:"90px", marginBottom:"20px"}}>
-        <p style={{ textAlign: 'center', fontSize: '30px', marginTop: '15px', marginBottom: '15px', fontWeight: '500' }}>
-          Delete User
-        </p>
-        <div className="profile_data_rows">
-          <select value={deleteBy} onChange={handleDeleteByChange} className="delete_select">
-            <option value="email">Delete by Email</option>
-            <option value="username">Delete by Username</option>
-          </select>
-        </div>
-        <div className="profile_data_rows">
-          <input type="text" value={deleteInput} onChange={handleDeleteInputChange} placeholder={`Enter ${deleteBy}`} className="delete-input"/>
-        </div>
-        <div className="profile_data_rows">
-            {showConfirmation && (
-            <div className="confirmation-modal">
-              <p>Are you sure you want to delete?</p>
-              <button onClick={handleDelete} className="confirm-button">Confirm Delete</button>
-              <button onClick={() => setShowConfirmation(false)} className="cancel-button">Cancel</button>
-            </div>
-          )}
-          {!showConfirmation && <button onClick={handleDelete} className="delete-button">Delete</button>}
-        </div>
-        <div className="profile_data_rows">
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-        </div>
-      </div>
-    );
-  }
   
 export default AdminProfile;
