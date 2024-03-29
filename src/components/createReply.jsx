@@ -29,7 +29,7 @@ class PostReply extends Form {
         <div className="container col-lg-6 shadow-lg p-3 mt-5 bg-body rounded">
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <label htmlFor="description">Post Reply</label>
+              <label htmlFor="description">Post Reply (min. 5 words)</label>
               <textarea
                 className="border border-primary form-control"
                 style={{ height: 150 }}
