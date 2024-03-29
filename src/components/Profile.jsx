@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import CollegeGoingProfile from './profileCollegeGoing';
 import CollegeSearchingProfile from './profileCollegeSearching';
+import AdminProfile from './profileAdmin';
 
 const ShowProfile = ({ user }) => {
   const history = useHistory();
@@ -16,7 +17,8 @@ const ShowProfile = ({ user }) => {
     return <CollegeGoingProfile user={user} />;
   } else if (user.userType === "collegeS") {
     return <CollegeSearchingProfile user={user} />;
-  }
+  } else if (user.userType === "Admin") {
+    return <AdminProfile user={user} />;
 
   // If user object or userType is missing, render a fallback message or component
   return (
