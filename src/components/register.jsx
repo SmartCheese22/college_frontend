@@ -33,7 +33,7 @@ class Register extends Form {
     try {
       const response = await userService.register(this.state.data);
       localStorage.setItem("token", response.headers["x-auth-token"]);
-      window.location = "/";
+      window.location = "/dashboard";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         toast.error("User Already Registered");
@@ -44,7 +44,7 @@ class Register extends Form {
   render() {
     const { data, errors } = this.state; 
     if (localStorage.getItem("token")) {
-      return <Redirect to="/" />;
+      return <Redirect to="/dashboard" />;
     }
 
     return (
@@ -175,15 +175,18 @@ class Register extends Form {
                     <option value="PHY">PHY</option>
                     <option value="CHM">CHM</option>
                     <option value="CHE">CHE</option>
-                    <option value="AE">CHE</option>
-                    <option value="MSE">CHE</option>
+                    <option value="AE">CIVIL</option>
+                    <option value="MSE">AE</option>
+                    <option value="MSE">SDS</option>
+                    <option value="MSE">MSE</option>
+                    <option value="MSE">ECO</option>
                   </select>
 
                   <Input
                     value={data.year}
                     onChange={this.handleChange}
                     label="Year"
-                    type="number"
+                    type="text"
                     name="year"
                   />
                   <Input
@@ -230,6 +233,10 @@ class Register extends Form {
         </div>
       </React.Fragment>
     );
+  }
+}
+
+export default Register;
   }
 }
 
