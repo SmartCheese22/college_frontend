@@ -65,13 +65,13 @@ class NewPost extends Form {
               <Input
                 value={data.title}
                 onChange={this.handleChange}
-                label="Title"
+                label="Title (min. 10 words)"
                 name="title"
                 type="text"
                 error={errors.title}
               />
               <div className="form-group">
-                <label htmlFor="description">Description</label>
+                <label htmlFor="description">Description (min. 5 words)</label>
                 <textarea
                   value={data.description}
                   onChange={this.handleChange}
