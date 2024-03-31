@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './profileCollegeGoing.css';
+import "./profileCollegeGoing.css"
 import gravatar from 'gravatar';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -82,7 +82,9 @@ function ProfileDataSection({ user }) {
       .then(response => {
         console.log(response.data);
         setIsEditingName(false);
-        window.location.reload();
+        setTimeout(() => {
+          window.location.reload();
+        }, 0);
       })
       .catch(error => {
         console.error('Error updating name:', error);
@@ -298,7 +300,7 @@ function ProfileDataSection({ user }) {
       {/* year */}
       <div className="professional_details">
         <div>
-          <p className="profile_data_rows" style={{ fontWeight: 'bold', fontStyle: 'italic', color: 'black' }}>Email</p>
+          <p className="profile_data_rows" style={{ fontWeight: 'bold', fontStyle: 'italic', color: 'black' }}>Graduation Year</p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', marginBottom: '5px' }}>
           {isEditingYear ? (
@@ -338,19 +340,6 @@ function Opinions({ user }) {
   
   const [isEditingOverallOpinion, setIsEditingOverallOpinion] = useState(false);
   const [newOverallOpinion, setNewOverallOpinion] = useState(user.OverallOpinion);
-
-  const handleAcademicOpinionEdit = () => {
-    setIsEditingAcademicOpinion(true);
-  };
-  const handleNonAcademicOpinionEdit = () => {
-    setIsEditingNonAcademicOpinion(true);
-  };
-  const handlePlacementOpinionEdit = () => {
-    setIsEditingPlacementOpinion(true);
-  };
-  const handleOverallOpinionEdit = () => {
-    setIsEditingOverallOpinion(true);
-  };
 
   const handleAcademicOpinionSubmit = () => {
     axios
