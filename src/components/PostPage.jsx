@@ -7,6 +7,7 @@ import http from "../services/httpService";
 import { api } from "../config.js";
 import PostReply from "./createReply";
 import "./PostPage.css";
+import { PersonCircle, HandThumbsUpFill, ExclamationCircleFill } from "react-bootstrap-icons";
 
 class PostPage extends Component {
   state = {
