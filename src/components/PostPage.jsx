@@ -63,7 +63,7 @@ class PostPage extends Component {
     try {
       await http.delete(api.postsEndPoint + this.props.match.params.id);
       toast.success("Post and replies deleted successfully!");
-      window.location.reload();
+      window.location.href = "/dashboard";
     } catch (ex) {
       toast.error("Failed to delete post and replies.");
     }
