@@ -223,9 +223,5 @@ class PostPage extends Component {
   }
 }
 
-export default PostPage;
-
-  
-}
 
 export default PostPage;
