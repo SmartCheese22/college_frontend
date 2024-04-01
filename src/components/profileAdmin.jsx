@@ -20,7 +20,7 @@ function AdminProfile({ user }) {
 
   return (
     <div className="profile-container">
-      <div className="profile">
+      <div className="profileadmin">
         <ProfileSection user={user} />
         <DonutChart userCounts={userCounts} />
       </div>

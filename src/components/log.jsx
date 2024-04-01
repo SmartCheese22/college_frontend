@@ -9,20 +9,16 @@ import './log.css';
 import LoginImage from "./images/1.jpg";
 import Logo from "./images/logo.jpg";
 
-// use programmatic navigation form login form to dashboard
-
-// add functionality to show react toast if the user is redierected to different locations due to history
 class Log extends Form {
   state = {
     data: { email: "", password: "" },
     errors: {
       email: "",
-      passowrd: "",
+      password: "",
     },
   };
 
   doSubmit = async () => {
-    // call the server;
     try {
       const { data } = this.state;
       const { data: jwt } = await login(data.email, data.password);
@@ -31,7 +27,7 @@ class Log extends Form {
       window.location = state ? state.from.pathname : "/users/login";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
-        toast.error("Invalid Email Or Password");
+        toast.error("Invalid Credentials!");
       }
     }
   };

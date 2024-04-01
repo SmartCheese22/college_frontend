@@ -2,7 +2,6 @@ import home_image from "./images/home_image.png"
 import "./Home.css";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import Cards from "../Cards/Cards";
 import {BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import { FaTwitter, FaFacebook, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import Iitkimage from './images/IITK.jpg';
@@ -181,7 +180,7 @@ function Footer(){
                         <li><a href="https://jeemain.nta.ac.in/">JEE Mains</a></li>
                         <li><a href="https://www.jeeadv.ac.in/">JEE Advanced</a></li>
                         <li><a href="https://www.bitsadmission.com/bitsatmain.aspx">BITSAT</a></li>
-                        <li><a href="#">Others</a></li>
+                        <li><Link to="/not-found">Others</Link></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -197,10 +196,10 @@ function Footer(){
                 <div class="footer-col">
                     <h4>follow us</h4>
                     <div class="social-links">
-                        <a href="#" className="fab fa-facebook-f"><FaFacebook /></a>
-                        <a href="#" className="fab fa-twitter"><FaTwitter /></a>
-                        <a href="#" className="fab fa-instagram"><FaInstagram /></a>
-                        <a href="#" className="fab fa-linkedin-in"><FaLinkedinIn /></a>
+                        <Link to="/not-found" className="fab fa-facebook-f"><FaFacebook /></Link>
+                        <Link to="/not-found" className="fab fa-twitter"><FaTwitter /></Link>
+                        <Link to="/not-found" className="fab fa-instagram"><FaInstagram /></Link>
+                        <Link to="/not-found" className="fab fa-linkedin-in"><FaLinkedinIn /></Link>
                     </div>
                 </div>
             </div>

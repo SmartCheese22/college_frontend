@@ -22,27 +22,52 @@ class Register extends Form {
       branch: "",
       year: "",
       AcademicOpinion: "",
-      NonAcademicOpinion: "", 
-      PlacementOpinion: "", 
-      OverallOpinion: "", 
+      NonAcademicOpinion: "",
+      PlacementOpinion: "",
+      OverallOpinion: "",
     },
     errors: {},
   };
 
-  doSubmit = async () => {
+  doSubmit = async (event) => {
+    event.preventDefault();
+    const { data } = this.state;
+
+    // Check for empty fields
+    for (let key in data) {
+    if (!data[key] && key !== "year" && key !== "branch" && key !== "college" && key !== "userType" && key !== "AcademicOpinion" && key !== "NonAcademicOpinion" && key !== "PlacementOpinion" && key !== "OverallOpinion") {
+      toast.error("Please fill in all fields.");
+      return;
+      }
+    }
+
+    // Check if passwords match
+    if (data.password !== data.password2) {
+      toast.error("Passwords do not match.");
+      return;
+    }
+
     try {
       const response = await userService.register(this.state.data);
       localStorage.setItem("token", response.headers["x-auth-token"]);
-      window.location = "/";
+      window.location = "/dashboard";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
-        toast.error("User Already Registered");
+        const errorMessage = ex.response.data;
+    
+        if (errorMessage === "Email already registered") {
+          toast.error("Email already registered");
+        } else if (errorMessage === "Username already registered") {
+          toast.error("Username already registered");
+        } else {
+          toast.error("User already registered");
+        }
       }
-    }
+    }    
   };
 
   render() {
-    const { data, errors } = this.state; 
+    const { data, errors } = this.state;
     if (localStorage.getItem("token")) {
       return <Redirect to="/" />;
     }
@@ -63,7 +88,7 @@ class Register extends Form {
           </div>
           <div className="login-right">
             <h1>Register</h1>
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.doSubmit}>
               <Input
                 value={data.name}
                 onChange={this.handleChange}
@@ -154,7 +179,7 @@ class Register extends Form {
                     <option value="IIT Goa">IIT Goa</option>
                     <option value="IIT Jammu">IIT Jammu</option>
                     <option value="IIT Dharwad">IIT Dharwad</option>
-                  </select>                  
+                  </select>
                   <label htmlFor="branch" className="form-label">
                     Branch
                   </label>
@@ -165,7 +190,7 @@ class Register extends Form {
                     value={data.branch}
                     onChange={this.handleChange}
                   >
-                    
+
                     <option value="">Select Branch</option>
                     <option value="CSE">CSE</option>
                     <option value="EE">EE</option>
@@ -185,7 +210,7 @@ class Register extends Form {
                   <Input
                     value={data.year}
                     onChange={this.handleChange}
-                    label="Year"
+                    label="Graduation Year"
                     type="text"
                     name="year"
                   />
@@ -224,9 +249,7 @@ class Register extends Form {
                 </React.Fragment>
               )}
               <div className="d-grid gap-2">
-                <button className="btn btn-primary" onClick={this.doSubmit}>
-                  Register
-                </button>
+              <button className="btn btn-primary">Register</button>
               </div>
             </form>
           </div>

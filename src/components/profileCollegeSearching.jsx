@@ -231,7 +231,6 @@ function Opinions({ user }) {
             )}
           </div>
         </div>
-        {/* Define similar sections for other opinions... */}
       </div>
     );
   }
