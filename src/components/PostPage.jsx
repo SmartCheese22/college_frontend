@@ -59,6 +59,15 @@ class PostPage extends Component {
       }
     }
   };
+  handleDelete = async () => {
+    try {
+      await http.delete(api.postsEndPoint + this.props.match.params.id);
+      toast.success("Post and replies deleted successfully!");
+      window.location.href = "/dashboard";
+    } catch (ex) {
+      toast.error("Failed to delete post and replies.");
+    }
+  };
   handleReplyUpvote = async (id) => {
     try {
       const replies_old = [...this.state.replies];
@@ -77,6 +86,8 @@ class PostPage extends Component {
   render() {
     const { post, replies } = this.state;
     const { user } = this.props;
+    const isAdmin = user && user.userType === "Admin";
+    
     return (
       <div>
         <ToastContainer />
@@ -121,6 +132,11 @@ class PostPage extends Component {
               </p>
             </div>
           </div>
+          {isAdmin && (
+            <button className="btn btn-danger mt-3" onClick={this.handleDelete}>
+              Delete Post & Replies
+            </button>
+          )}
         </div>
         {user && <PostReply id={this.props.match.params.id} />}
         <div className="container col-lg-6 shadow-lg p-3 mt-5 bg-body rounded">
