@@ -16,6 +16,7 @@ class PostPage extends Component {
       tags: [],
       author: [],
       upvotes: [],
+      reports: [],
       views: 0,
     },
     replies: [],
@@ -31,6 +32,13 @@ class PostPage extends Component {
     const { post } = this.state;
     //console.log(user);
     if (user && post.upvotes && post.upvotes.includes(user._id)) return true;
+    else return false;
+  }
+  checkReport() {
+    const { user } = this.props;
+    const { post } = this.state;
+    //console.log(user);
+    if (user && post.reports && post.reports.includes(user._id)) return true;
     else return false;
   }
   checkReplyLike(id) {
@@ -56,6 +64,19 @@ class PostPage extends Component {
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         toast.error("You cannot UpVote your own Post!");
+      }
+    }
+  };
+  handleReport = async () => { 
+    try {
+      const { data: post } = await http.put(
+        api.postsEndPoint + "report/" + this.props.match.params.id,
+        {}
+      );
+      this.setState({ post: post }); 
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        toast.error("You can't report your own post.");
       }
     }
   };
@@ -116,6 +137,18 @@ class PostPage extends Component {
               >
                 <HandThumbsUpFill className="mr-2" />
                 {(post.upvotes && post.upvotes.length) || 0}
+              </button>
+              <button
+                disabled={!user}
+                className={
+                  this.checkReport()
+                    ? "btn btn-danger"
+                    : "btn btn-outline-danger"
+                }
+                onClick={this.handleReport}
+              >
+                <ExclamationCircleFill className="mr-2" />
+                {(post.reports && post.reports.length) || 0} Reports
               </button>
               <p>{post.views} Views</p>
             </div>
