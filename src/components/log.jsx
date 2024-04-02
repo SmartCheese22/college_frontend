@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "../App.css";
@@ -8,6 +8,7 @@ import { login } from "../services/authService";
 import './log.css';
 import LoginImage from "./images/1.jpg";
 import Logo from "./images/logo.jpg";
+import LoadingSpinner from './LoadingSpinner';
 
 class Log extends Form {
   state = {
@@ -16,11 +17,13 @@ class Log extends Form {
       email: "",
       password: "",
     },
+    loading: false, // Add loading state variable
   };
 
   doSubmit = async () => {
     try {
       const { data } = this.state;
+      this.setState({ loading: true }); // Set loading to true when login starts
       const { data: jwt } = await login(data.email, data.password);
       localStorage.setItem("token", jwt);
       const { state } = this.props.location;
@@ -29,6 +32,8 @@ class Log extends Form {
       if (ex.response && ex.response.status === 400) {
         toast.error("Invalid Credentials!");
       }
+    } finally {
+      this.setState({ loading: false }); // Set loading to false when login ends
     }
   };
 
@@ -36,12 +41,13 @@ class Log extends Form {
     if (localStorage.getItem("token")) {
       return <Redirect to="/" />;
     }
-    const { data, errors } = this.state;
+    const { data, errors, loading } = this.state;
     return (
       <div className="login-main">
+        {loading && <LoadingSpinner />} {/* Show loading spinner if loading state is true */}
         <div className="login-left" alt="logo">
           <div className="login-left-top">
-            <img src={Logo} />
+            <img src={Logo} alt="logo" />
             <h1> College PathFinder</h1>
             <p>Empowering Futures, Guiding Paths : College PathFinder- Your Journey, Your Choice.</p>
           </div>
