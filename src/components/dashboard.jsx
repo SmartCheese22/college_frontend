@@ -7,7 +7,7 @@ import { paginate } from "../utils/paginate";
 import { api } from "../config.js";
 import http from "../services/httpService";
 import Jumotron from "./common/jumbotron";
-import LoadingSpinner from './LoadingSpinner'; // Import the LoadingSpinner component
+import LoadingSpinner from "./LoadingSpinner";
 
 class Dashboard extends Component {
   state = {
@@ -16,65 +16,74 @@ class Dashboard extends Component {
     pageSize: 4,
     tags: [],
     selectedTag: { _id: "1", name: "All Posts" },
-    loading: true, // Initialize loading state
   };
-
   async componentDidMount() {
-    try {
-      const { data: allposts } = await http.get(api.postsEndPoint);
-      const { data: tags } = await http.get(api.tagsEndPoint);
+    const { data: allposts } = await http.get(api.postsEndPoint);
+    const { data: tags } = await http.get(api.tagsEndPoint);
 
-      allposts.sort((a, b) => new Date(b.time).getTime() - new Date(a.time).getTime());
+    allposts.sort((a, b) => new Date(b.time).getTime() - new Date(a.time).getTime());
 
-      this.setState({
-        allposts: [...allposts],
-        tags: [
-          {
-            _id: "1",
-            name: "All Posts",
-          },
-          ...tags,
-        ],
-        loading: false, // Set loading to false when API calls are completed
-      });
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      this.setState({ loading: false }); // Set loading to false even if there's an error
-    }
+    this.setState({
+      allposts: [...allposts],
+      tags: [
+        {
+          _id: "1",
+          name: "All Posts",
+        },
+        ...tags,
+      ],
+    });
   }
-
-  // Other methods remain unchanged
-
+  handlePageChange = (page) => {
+    this.setState({ currentPage: page });
+  };
+  handlePostDelete = (post) => {};
+  handleTagSelect = (tag) => {
+    this.setState({ selectedTag: tag, currentPage: 1 });
+  };
+  getPosts() {
+    const { allposts, selectedTag } = this.state;
+    const filtered = [];
+    for (let i in allposts) {
+      const post = allposts[i];
+      const { tags } = post;
+      for (let j in tags) {
+        if (tags[j].name === selectedTag.name) {
+          filtered.push(post);
+          break;
+        }
+      }
+    }
+    console.log(filtered);
+    return filtered;
+  }
   render() {
     const { user } = this.props;
-    const { allposts, pageSize, currentPage, tags, selectedTag, loading } = this.state;
+    const { allposts, pageSize, currentPage, tags, selectedTag } = this.state;
     const filtered = selectedTag._id === "1" ? allposts : this.getPosts();
     const posts = paginate(filtered, currentPage, pageSize);
 
-    // Show loading spinner while data is being fetched
-    if (loading)
-      return <LoadingSpinner />;
-
-    if (allposts.length === 0)
-      return <p>No posts found.</p>;
-
+  if (allposts.length === 0)
+  return <LoadingSpinner />;
     return (
       <React.Fragment>
         <Jumotron />
-        <div className="container-fluid" >
+        <div className="container">
           <div className="row">
             <div className="col">
               <div className="d-flex w-100 justify-content-between m-3">
                 Showing {filtered.length} posts.
-                <Link to="/new-post">
-                  <button
-                    type="button"
-                    className="btn btn-success"
-                    style={{ marginBottom: 20 , backgroundColor: 'rgb(120, 159, 159)'}}
-                  >
-                    New Post
-                  </button>
-                </Link>
+                {user && (
+                  <Link to="/new-post">
+                    <button
+                      type="button"
+                      class="btn btn-success"
+                      style={{ marginBottom: 20 }}
+                    >
+                      New Post
+                    </button>
+                  </Link>
+                )}
               </div>
             </div>
           </div>
@@ -103,4 +112,3 @@ class Dashboard extends Component {
 }
 
 export default Dashboard;
-
