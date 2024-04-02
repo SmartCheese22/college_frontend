@@ -57,8 +57,8 @@ class Register extends Form {
     
         if (errorMessage === "Email already registered") {
           toast.error("Email already registered");
-        } else if (errorMessage === "Username already registered") {
-          toast.error("Username already registered");
+        } else if (errorMessage === "Username not available") {
+          toast.error("Username not available");
         } else {
           toast.error("User already registered");
         }
