@@ -1,9 +1,9 @@
 import React from 'react';
-import './LoadingSpinner.css'; // Import the CSS for styling
+import './LoadingSpinner.css';
 
 const LoadingSpinner = () => (
-  <div className="loading-overlay">
-    <div className="spinner"></div>
+  <div className="loader-container">
+    <span className="loader"></span>
   </div>
 );
 
