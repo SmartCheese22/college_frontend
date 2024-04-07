@@ -71,6 +71,21 @@ function InputDataSection({ colleges, setShowOptions, setSelectedInputs, selecte
       ...selectedInputs,
       [name]: value
     });
+    if (name === "AIR") {
+      if (value === "" || (Number.isInteger(parseInt(value)) && parseInt(value) > 0)) {
+        setSelectedInputs({
+          ...selectedInputs,
+          [name]: value === "" ? null : parseInt(value)
+        });
+      } else {
+        alert("Please enter a valid positive integer value for AIR or leave it empty.");
+      }
+    } else {
+      setSelectedInputs({
+        ...selectedInputs,
+        [name]: value
+      });
+    }
   };
 
   return (
