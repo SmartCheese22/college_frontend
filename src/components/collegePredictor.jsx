@@ -2,6 +2,7 @@ import "./collegePredictor.css";
 import { useState, useEffect } from "react";
 import colleges from './colleges.json';
 
+
 function isEmpty(obj) {
     return Object.keys(obj).filter(key => key !== 'examination').every(key => obj[key] === "" || obj[key] === null);
 }
