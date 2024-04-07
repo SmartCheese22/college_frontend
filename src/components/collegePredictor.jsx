@@ -73,7 +73,7 @@ function InputDataSection({ colleges, setShowOptions, setSelectedInputs, selecte
       if (value === "" || (Number.isInteger(intValue) && intValue > 0)) {
         setSelectedInputs({
           ...selectedInputs,
-          [name]: value === "" ? null : parseInt(value)
+          [name]: value === "" ? null : parseInt(value),
           [name]: value === "" ? null : intValue
         });
       } else {
