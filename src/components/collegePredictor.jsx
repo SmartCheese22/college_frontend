@@ -2,7 +2,6 @@ import "./collegePredictor.css";
 import { useState, useEffect } from "react";
 import colleges from './colleges.json';
 
-
 function isEmpty(obj) {
     return Object.keys(obj).filter(key => key !== 'examination').every(key => obj[key] === "" || obj[key] === null);
 }
@@ -69,12 +68,10 @@ function InputDataSection({ colleges, setShowOptions, setSelectedInputs, selecte
 
   const handleInputChange = (name, value) => {
     if (name === "AIR") {
-      if (value === "" || (Number.isInteger(parseInt(value)) && parseInt(value) > 0)) {
       const intValue = parseInt(value);
       if (value === "" || (Number.isInteger(intValue) && intValue > 0)) {
         setSelectedInputs({
           ...selectedInputs,
-          [name]: value === "" ? null : parseInt(value),
           [name]: value === "" ? null : intValue
         });
       } else {
@@ -91,7 +88,6 @@ function InputDataSection({ colleges, setShowOptions, setSelectedInputs, selecte
       });
     }
   };
-
 
   return (
     <>
@@ -122,7 +118,6 @@ function InputDataSection({ colleges, setShowOptions, setSelectedInputs, selecte
             type="number"
             className="form__field"
             placeholder="Enter Category AIR"
-            value={selectedInputs.AIR}
             value={selectedInputs.AIR !== null ? selectedInputs.AIR : ''}
             onChange={(e) => handleInputChange("AIR", e.target.value)}
           />
