@@ -67,18 +67,21 @@ function InputDataSection({ colleges, setShowOptions, setSelectedInputs, selecte
   const uniqueBranchNamesArray = Array.from(uniqueBranchNames);
 
   const handleInputChange = (name, value) => {
-    setSelectedInputs({
-      ...selectedInputs,
-      [name]: value
-    });
     if (name === "AIR") {
       if (value === "" || (Number.isInteger(parseInt(value)) && parseInt(value) > 0)) {
+      const intValue = parseInt(value);
+      if (value === "" || (Number.isInteger(intValue) && intValue > 0)) {
         setSelectedInputs({
           ...selectedInputs,
           [name]: value === "" ? null : parseInt(value)
+          [name]: value === "" ? null : intValue
         });
       } else {
         alert("Please enter a valid positive integer value for AIR or leave it empty.");
+        setSelectedInputs({
+          ...selectedInputs,
+          [name]: null
+        });
       }
     } else {
       setSelectedInputs({
@@ -87,6 +90,7 @@ function InputDataSection({ colleges, setShowOptions, setSelectedInputs, selecte
       });
     }
   };
+
 
   return (
     <>
@@ -118,6 +122,7 @@ function InputDataSection({ colleges, setShowOptions, setSelectedInputs, selecte
             className="form__field"
             placeholder="Enter Category AIR"
             value={selectedInputs.AIR}
+            value={selectedInputs.AIR !== null ? selectedInputs.AIR : ''}
             onChange={(e) => handleInputChange("AIR", e.target.value)}
           />
         </div>
