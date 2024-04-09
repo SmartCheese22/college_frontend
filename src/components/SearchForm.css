@@ -1,28 +1,27 @@
-
 .search-form {
   margin-bottom: 20px;
 }
 
-.input{
-  display:grid;
+.input {
+  display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
 }
 
-.form-control1{
-  margin:40px;
+.form-control1 {
+  margin: 40px;
   border-radius: 40px;
   width: 40%;
-  height:40px;
-  font-family: 'Knewave', cursive;
+  height: 40px;
+  font-family: 'Pacifico', cursive; /* Use Pacifico font */
 }
 
-.form-control2{
-  margin:40px;
+.form-control2 {
+  margin: 40px;
   border-radius: 40px;
   width: 40%;
-  height:40px;
-  font-family: 'Knewave', cursive;
+  height: 40px;
+  font-family: 'Pacifico', cursive; /* Use Pacifico font */
 }
 
 .search-form {
@@ -32,22 +31,22 @@
 }
 
 @media (max-width: 800px) {
-  .form-control1{
-    margin-left:60px;
-    margin-top:60px;
+  .form-control1 {
+    margin-left: 60px;
+    margin-top: 60px;
     border-radius: 40px;
     width: 80%;
-    font-family: 'Knewave', cursive;
-    height:40px;
+    font-family: 'Pacifico', cursive; /* Use Pacifico font */
+    height: 40px;
   }
-  
-  .form-control2{
-    margin-left:60px;
+
+  .form-control2 {
+    margin-left: 60px;
     margin-top: 0px;
     border-radius: 40px;
     width: 80%;
-    height:40px;
-    font-family: 'Knewave', cursive;
+    height: 40px;
+    font-family: 'Pacifico', cursive; /* Use Pacifico font */
   }
 }
 
