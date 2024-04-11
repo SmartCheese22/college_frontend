@@ -9,6 +9,7 @@ import './log.css';
 import LoginImage from "./images/1.jpg";
 import Logo from "./images/logo.jpg";
 
+
 class Log extends Form {
   state = {
     data: { email: "", password: "" },

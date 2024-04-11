@@ -1,7 +1,7 @@
-/* Styles for SearchResult component */
+
 .search-result {
   padding: 20px;
-  font-family: 'Comic Neue', cursive; /* Apply interesting font */
+  font-family: 'Pacifico', sans-serif; /* Apply Pacifico font */
 }
 
 .student-card {
@@ -12,19 +12,22 @@
   background-color: #f7f7f7; /* Background color */
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3); /* Box shadow for card */
   transition: transform 0.3s ease; /* Transition for hover effect */
+  font-family: 'Pacifico', sans-serif; /* Apply Pacifico font */
 }
 
 .student-card:hover {
   transform: translateY(-5px); /* Hover effect to lift card */
 }
 
-.card-title{
+.card-title {
   color: #4CAF50; /* Title color */
   font-size: 24px; /* Title font size */
+  font-family: 'Pacifico', sans-serif; /* Apply Pacifico font */
 }
 
-.card-text{
+.card-text {
   color: #333; /* Text color */
+  font-family: 'Pacifico', sans-serif; /* Apply Pacifico font */
 }
 
 .opinions {
@@ -35,4 +38,6 @@
 .opinions .opinion {
   margin: 5px 0;
   color: #777; /* Opinion text color */
+  font-family: 'Pacifico', sans-serif; /* Apply Pacifico font */
 }
+

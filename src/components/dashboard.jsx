@@ -7,6 +7,7 @@ import { paginate } from "../utils/paginate";
 import { api } from "../config.js";
 import http from "../services/httpService";
 import Jumotron from "./common/jumbotron";
+import LoadingSpinner from "./LoadingSpinner";
 
 class Dashboard extends Component {
   state = {
@@ -16,7 +17,6 @@ class Dashboard extends Component {
     tags: [],
     selectedTag: { _id: "1", name: "All Posts" },
   };
-
   async componentDidMount() {
     const { data: allposts } = await http.get(api.postsEndPoint);
     const { data: tags } = await http.get(api.tagsEndPoint);
@@ -34,17 +34,13 @@ class Dashboard extends Component {
       ],
     });
   }
-
   handlePageChange = (page) => {
     this.setState({ currentPage: page });
   };
-
   handlePostDelete = (post) => {};
-
   handleTagSelect = (tag) => {
     this.setState({ selectedTag: tag, currentPage: 1 });
   };
-
   getPosts() {
     const { allposts, selectedTag } = this.state;
     const filtered = [];
@@ -58,35 +54,36 @@ class Dashboard extends Component {
         }
       }
     }
+    console.log(filtered);
     return filtered;
   }
-
   render() {
     const { user } = this.props;
     const { allposts, pageSize, currentPage, tags, selectedTag } = this.state;
     const filtered = selectedTag._id === "1" ? allposts : this.getPosts();
     const posts = paginate(filtered, currentPage, pageSize);
 
-    if (allposts.length === 0)
-      return <p>Loading...</p>;
-
+  if (allposts.length === 0)
+  return <LoadingSpinner />;
     return (
       <React.Fragment>
         <Jumotron />
-        <div className="container-fluid" >
+        <div className="container">
           <div className="row">
             <div className="col">
               <div className="d-flex w-100 justify-content-between m-3">
                 Showing {filtered.length} posts.
-                <Link to="/new-post">
-                  <button
-                    type="button"
-                    class="btn btn-success"
-                    style={{ marginBottom: 20 , backgroundColor: 'rgb(120, 159, 159)'}}
-                  >
-                    New Post
-                  </button>
-                </Link>
+                {user && (
+                  <Link to="/new-post">
+                    <button
+                      type="button"
+                      class="btn btn-success"
+                      style={{ marginBottom: 20 }}
+                    >
+                      New Post
+                    </button>
+                  </Link>
+                )}
               </div>
             </div>
           </div>
