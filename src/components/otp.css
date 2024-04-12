@@ -1,116 +1,116 @@
 .login-main {
-    display: grid;
-    grid-template-columns: 1fr 2.5fr;
-    margin: -10px;
-    height: 800px;
-    background-color: #8BB2B2;
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  margin: -10px;
+  height: 800px;
+  background-color: #8BB2B2;
 }
 
-.login-left {
-    display: grid;
-    grid-template-rows: 2fr 3fr;
-    color: white;
-    font-family: serif;
+.container-left {
+  display: grid;
+  grid-template-rows: 2fr 3fr;
+  color: white;
+  font-family: serif;
 }
 
-.login-left-top img {
-    width: 40px;
-    margin-top: 20px;
-    margin-left: 30px;
+.container-left-top img {
+  width: 40px;
+  margin-top: 20px;
+  margin-left: 30px;
 }
 
-.login-left-top h1 {
-    margin-top: 40px;
-    margin-left: 30px;
+.container-left-top h1 {
+  margin-top: 40px;
+  margin-left: 30px;
 }
 
-.login-left-top p {
-    margin: 40px;
-    margin-left: 30px;
-    margin-top: 60px;
-    font-size: 18px;
+.container-left-top p {
+  margin: 40px;
+  margin-left: 30px;
+  margin-top: 60px;
+  font-size: 18px;
 }
 
-.login-image {
-    margin-left: 10%;
-    transform: rotate(5deg);
+.container-image {
+  margin-left: 10%;
+  transform: rotate(5deg);
 }
 
-.login-right {
-    padding-left: 80px;
-    padding-top: 80px;
-    font-family: serif;
-    border-radius: 50px;
-    background-color: white;
+.container-right {
+  padding-left: 80px;
+  padding-top: 80px;
+  font-family: serif;
+  border-radius: 50px;
+  background-color: white;
 }
 
-.login-right-heading {
-    color: gray;
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 50px;
+.container-right-heading {
+  color: gray;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
 }
 
-.login-right-text {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    text-align: center; /* Center the text */
+.container-right-text {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center; /* Center the text */
 }
 
-.login-right-text p {
-    width: 60%;
-    color: gray;
-    margin: 0 auto; /* Center the paragraph */
+.container-right-text p {
+  width: 60%;
+  color: gray;
+  margin: 0 auto; /* Center the paragraph */
 }
 
 .otp-div {
-    display: flex;
-    justify-content: center; /* Center the OTP input fields */
-    width: 80%;
-    margin: 0 auto; /* Center the OTP input field container */
+  display: flex;
+  justify-content: center; /* Center the OTP input fields */
+  width: 80%;
+  margin: 0 auto; /* Center the OTP input field container */
+  margin-bottom: 20px;
 }
 
 .otp-button {
-    text-align: center;
-    font-size: 18px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    width: 40px; /* Adjust width for individual OTP input fields */
-    height: 40px; /* Adjust height for individual OTP input fields */
+  text-align: center;
+  font-size: 18px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 60px; /* Adjust width for individual OTP input fields */
+  height: 60px; /* Adjust height for individual OTP input fields */
+  margin-right: 20px;
 }
 
-.login-right button {
-    margin-top: 40px;
-    height: 45px;
-    width: 78%;
-    background-color: #258de6;
-    color: white;
-    letter-spacing: 1px;
-    border: none;
-    display: block;
-    font-weight: bold;
-    border-radius: 8px;
-    margin: 0 auto; /* Center the button */
+.container-right button {
+  margin-top: 40px;
+  height: 45px;
+  width: 78%;
+  background-color: #258de6;
+  color: white;
+  letter-spacing: 1px;
+  border: none;
+  display: block;
+  font-weight: bold;
+  border-radius: 8px;
+  margin: 0 auto; /* Center the button */
 }
 
 @media (max-width: 1000px) {
-    .login-right {
-        flex-basis: auto;
-    }
+  .container-right {
+      flex-basis: auto;
+  }
 
-    .login-right input {
-        width: 250px;
-    }
-
-    .login-main {
-        display: block;
-    }
+  .container-main {
+      display: block;
+  }
 }
 
 button:hover {
-    filter: brightness(95%);
+  filter: brightness(95%);
 }
 
 button:active {
-    transform: scale(0.98);
+  transform: scale(0.98);
 }
