@@ -46,8 +46,14 @@ const Otp = ({ user }) => {
   const handleOtpSubmit = async (e) => {
     e.preventDefault();
     const enteredOtp = otp.join('');
-    if (enteredOtp === generatedOTP || generatedOTP !== undefined) {
+    const isAnyFieldEmpty = otp.some(digit => !digit);
+  
+    if (isAnyFieldEmpty) {
+      toast.error('Please fill in all OTP fields.');
+    }
+    else if (enteredOtp === generatedOTP || generatedOTP !== undefined) {
       toast.success('OTP verified successfully!');
+      setGeneratedOTP(null);
       if (user && user._id) {
         try {
           await userService.verifyOTP(user);
