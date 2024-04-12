@@ -46,7 +46,19 @@ class Register extends Form {
       toast.error("Passwords do not match.");
       return;
     }
-
+    
+    const { name, username, email, password } = data;
+    const fieldsToCheck = { name, username, email, password };
+    for (let field in fieldsToCheck) {
+      const fieldValue = fieldsToCheck[field];
+      console.log(`Field: ${field}, Value: ${fieldValue}`); 
+    
+      if (fieldValue.trim().length < 5) {
+        toast.error(`${field.charAt(0).toUpperCase() + field.slice(1)} must be at least 5 characters long.`);
+        return;
+      }
+    }
+    
     try {
       const response = await userService.register(this.state.data);
       localStorage.setItem("token", response.headers["x-auth-token"]);
