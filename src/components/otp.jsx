@@ -114,9 +114,6 @@ class Otp extends Component {
             <button type="submit" onClick={this.handleOtpSubmit}>
               Confirm OTP
             </button>
-            <p>
-              Didn't get OTP? <Link to="/register">Resend OTP</Link>
-            </p>
           </form>
         </div>
       </div>
