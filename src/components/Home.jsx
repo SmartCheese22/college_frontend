@@ -164,18 +164,6 @@ function TopColleges() {
 
 function Footer(){
 
-    const history = useHistory();
-
-    const handleProfileClick = async () => {
-        const token = localStorage.getItem("x-auth-token");
-
-        if (token) {
-            history.push("/users/profile");
-        } else {
-            history.push("/users/login");
-        }
-    };
-    
     return (
         <div class="container-footer" style={{ backgroundColor: 'black' }}>
             <div class="row">
@@ -199,7 +187,7 @@ function Footer(){
                 <div class="footer-col">
     <h4>TOOLS</h4>
     <ul>
-       <li><button onClick={handleProfileClick}>Profile</button></li>
+       <li><Link to="/me">Profile</></li>
         <li><Link to="/users/search">College Search</Link></li>
         <li><Link to="/users/compare">College Compare</Link></li>
         <li><Link to="/users/collegepredictor">College Predictor</Link></li>
