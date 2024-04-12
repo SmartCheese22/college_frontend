@@ -167,7 +167,7 @@ function Footer(){
     const history = useHistory();
 
     const handleProfileClick = async () => {
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("x-auth-token");
 
         if (token) {
             history.push("/users/profile");
