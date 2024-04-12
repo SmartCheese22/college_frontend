@@ -57,7 +57,7 @@ class App extends Component {
                   <Redirect to="/otp" />
                 )
               ) : (
-                <Redirect to="/users/register" />
+                <Redirect to="/users/login" />
               )
             }
           />
@@ -71,7 +71,7 @@ class App extends Component {
                   <Redirect to="/otp" />
                 )
               ) : (
-                <Redirect to="/users/register" />
+                <Redirect to="/users/login" />
               )
             }
           />
@@ -86,7 +86,7 @@ class App extends Component {
                   <Redirect to="/otp" />
                 )
               ) : (
-                <Redirect to="/users/register" />
+                <Redirect to="/users/loginr" />
               )
             }
           />
@@ -100,7 +100,7 @@ class App extends Component {
                   <Redirect to="/otp" />
                 )
               ) : (
-                <Redirect to="/users/register" />
+                <Redirect to="/users/login" />
               )
             }
           />
@@ -114,7 +114,7 @@ class App extends Component {
                   <Redirect to="/otp" />
                 )
               ) : (
-                <Redirect to="/users/register" />
+                <Redirect to="/users/loginr" />
               )
             }
           />
