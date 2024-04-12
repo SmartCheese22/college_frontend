@@ -51,7 +51,6 @@ class Register extends Form {
     const fieldsToCheck = { name, username, email, password };
     for (let field in fieldsToCheck) {
       const fieldValue = fieldsToCheck[field];
-      console.log(`Field: ${field}, Value: ${fieldValue}`); 
     
       if (fieldValue.trim().length < 5) {
         toast.error(`${field.charAt(0).toUpperCase() + field.slice(1)} must be at least 5 characters long.`);
