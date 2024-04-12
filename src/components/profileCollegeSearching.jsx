@@ -146,6 +146,7 @@ function ProfileSection({user}){
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', marginBottom: '5px' }}>
         </div>
+          <p className="profile-data-values">{user.email}</p>
       </div>
         </div>
     );
