@@ -95,7 +95,7 @@ class Otp extends Component {
           <div className="login-right-heading">OTP</div>
           <div className='login-right-text'>
             <p>We have sent you a six-digit code to your email address.</p>
-            <p>Please enter the code to reset your password.</p>
+            <p>Please enter the code to verify your Email.</p>
           </div>
           <form>
             <div className="otp-div">
