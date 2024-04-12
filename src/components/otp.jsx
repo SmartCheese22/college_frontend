@@ -5,6 +5,7 @@ import * as otpService from "../services/otpService";
 import * as userService from "../services/userService";
 import LoginImage from './images/1.jpg';
 import Logo from './images/logo.jpg';
+import "./otp.css";
 
 const Otp = ({ user }) => {
   const [otp, setOtp] = useState(['', '', '', '', '', '']);
@@ -73,19 +74,19 @@ const Otp = ({ user }) => {
 
   return (
     <div className="login-main">
-      <div className="login-left" alt="logo">
-        <div className="login-left-top">
+      <div className="container-left" alt="logo">
+        <div className="container-left-top">
           <img src={Logo} alt="Logo" />
           <h1> College PathFinder</h1>
           <p>Empowering Futures, Guiding Paths: College PathFinder- Your Journey, Your Choice.</p>
         </div>
-        <div className="login-left-bottom">
+        <div className="container-left-bottom">
           <img className="login-image" src={LoginImage} alt="illustration" />
         </div>
       </div>
-      <div className="login-right">
-        <div className="login-right-heading">OTP</div>
-        <div className='login-right-text'>
+      <div className="container-right">
+        <div className="container-right-heading">OTP</div>
+        <div className='container-right-text'>
           <p>We have sent you a six-digit code to your email address.</p>
           <p>Please enter the code to reset your password.</p>
         </div>
@@ -106,9 +107,6 @@ const Otp = ({ user }) => {
           <button type="submit" onClick={handleOtpSubmit}>
             Confirm OTP
           </button>
-          <p>
-            Didn't get OTP? <Link to="/register">Resend OTP</Link>
-          </p>
         </form>
       </div>
     </div>
