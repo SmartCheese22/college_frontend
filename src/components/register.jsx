@@ -50,7 +50,7 @@ class Register extends Form {
     try {
       const response = await userService.register(this.state.data);
       localStorage.setItem("token", response.headers["x-auth-token"]);
-      window.location = "/";
+      window.location = `/otp`;
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errorMessage = ex.response.data;
