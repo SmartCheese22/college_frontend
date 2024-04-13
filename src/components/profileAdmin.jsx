@@ -198,7 +198,7 @@ function ProfileDataSection({ user }) {
           <p className="profile_data_rows" style={{ fontWeight: 'bold', fontStyle: 'italic', color: 'black' }}>Email</p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', marginBottom: '5px' }}>
-          {isEditingEmail ? (
+          {/* {isEditingEmail ? (
             <>
               <input type="text" value={newEmail} onChange={e => setNewEmail(e.target.value)} className="profile-data-values" onKeyDown={(e) => {
           if (e.key === 'Enter') {
@@ -211,12 +211,12 @@ function ProfileDataSection({ user }) {
             </>
           ) : (
             <>
-              <p className="profile-data-values">{user.email}</p>
-              <button className="edit-button" onClick={handleEmailEdit}>
-                Edit
-              </button>
+            <button className="edit-button" onClick={handleEmailEdit}>
+            Edit
+            </button>
             </>
-          )}
+          )} */}
+          <p className="profile-data-values">{user.email}</p>
         </div>
       </div>
     </div>

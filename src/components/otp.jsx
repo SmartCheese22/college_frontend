@@ -52,7 +52,7 @@ const Otp = ({ user }) => {
     if (isAnyFieldEmpty) {
       toast.error('Please fill in all OTP fields.');
     }
-    else if (enteredOtp === generatedOTP || generatedOTP !== undefined) {
+    else if (enteredOtp == generatedOTP || generatedOTP != undefined) {
       toast.success('OTP verified successfully!');
       setGeneratedOTP(null);
       if (user && user._id) {
@@ -88,7 +88,7 @@ const Otp = ({ user }) => {
         <div className="container-right-heading">OTP</div>
         <div className='container-right-text'>
           <p>We have sent you a six-digit code to your email address.</p>
-          <p>Please enter the code to reset your password.</p>
+          {/* <p>Please enter the code to reset your password.</p> */}
         </div>
         <form>
           <div className="otp-div">
