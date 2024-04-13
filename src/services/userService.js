@@ -18,3 +18,7 @@ export function register(user) {
     OverallOpinion: user.OverallOpinion,
   });
 }
+
+export function verifyOTP(user) {
+  return http.put(`${api.usersEndPoint}verify/${user._id}`, { isVerified: true });
+}

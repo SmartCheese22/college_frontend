@@ -50,7 +50,6 @@ function ProfileDataSection({ user }) {
   const [isEditingBranch, setIsEditingBranch] = useState(false);
   const [isEditingYear, setIsEditingYear] = useState(false);
   const [newName, setNewName] = useState(user.name);
-  const [newEmail, setNewEmail] = useState(user.email);
   const [newUsername, setNewUsername] = useState(user.username);
   const [newCollege, setNewCollege] = useState(user.college);
   const [newBranch, setNewBranch] = useState(user.branch);
@@ -72,9 +71,6 @@ function ProfileDataSection({ user }) {
     setIsEditingYear(true);
   };
 
-  const handleEmailEdit = () => {
-    setIsEditingEmail(true);
-  };
 
   const handleNameSubmit = () => {
     axios
@@ -104,19 +100,6 @@ function ProfileDataSection({ user }) {
       });
   };
 
-
-  const handleEmailSubmit = () => {
-    axios
-      .patch(`https://college-backend-tyqu.onrender.com/users/profile/updateEmail/${user.email}`, { newEmail: newEmail })
-      .then(response => {
-        console.log(response.data);
-        setIsEditingEmail(false);
-        window.location.reload();
-      })
-      .catch(error => {
-        console.error('Error updating email:', error);
-      });
-  };
 
   const handleCollegeSubmit = () => {
     axios
@@ -222,25 +205,9 @@ function ProfileDataSection({ user }) {
           <p className="profile_data_rows" style={{ fontWeight: 'bold', fontStyle: 'italic', color: 'black' }}>Email</p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', marginBottom: '5px' }}>
-          {isEditingEmail ? (
-            <>
-              <input type="text" value={newEmail} onChange={e => setNewEmail(e.target.value)} className="profile-data-values" onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-            handleEmailSubmit();
-          }
-        }}/>
-              <button className="edit-button" onClick={handleEmailSubmit}>
-                Save
-              </button>
-            </>
-          ) : (
-            <>
+          
               <p className="profile-data-values">{user.email}</p>
-              <button className="edit-button" onClick={handleEmailEdit}>
-                Edit
-              </button>
-            </>
-          )}
+              
         </div>
       </div>
       {/* College */}

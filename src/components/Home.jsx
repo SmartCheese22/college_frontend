@@ -1,7 +1,7 @@
 import home_image from "./images/home_image.png"
 import "./Home.css";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import { FaTwitter, FaFacebook, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import Iitkimage from './images/IITK.jpg';
@@ -163,6 +163,7 @@ function TopColleges() {
 
 
 function Footer(){
+
     return (
         <div class="container-footer" style={{ backgroundColor: 'black' }}>
             <div class="row">
@@ -186,7 +187,7 @@ function Footer(){
                 <div class="footer-col">
     <h4>TOOLS</h4>
     <ul>
-        <li><Link to="/me">Profile</Link></li>
+       <li><Link to="/me">Profile</Link></li>
         <li><Link to="/users/search">College Search</Link></li>
         <li><Link to="/users/compare">College Compare</Link></li>
         <li><Link to="/users/collegepredictor">College Predictor</Link></li>
